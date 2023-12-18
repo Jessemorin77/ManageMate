@@ -4,61 +4,9 @@ import Select from "../DataInput/Selector";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-interface Option {
-  label: string;
-  value: string;
-}
 
-const options: Option[] = [
-  { label: "", value: "" },
-  { label: "Cleaner", value: "cleaner" },
-  { label: "Plumber", value: "plumber" },
-  { label: "Carpenter", value: "carpenter" },
-];
 
 export default function Hero() {
-  const router = useRouter();
-  const [selectedValue, setSelectedValue] = useState<string>("");
-  const [ZipCode, setZipCode] = useState<number | undefined>(undefined);
-
-  const handleSelect = (value: string) => {
-    setSelectedValue(value);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(selectedValue);
-    console.log(ZipCode);
-    if (selectedValue == "" || ZipCode == undefined) {
-      alert("please select a value service, or zipcode");
-      console.error("invalid input");
-      return;
-    }
-    const dataToSend = {
-      service: selectedValue,
-      zipCode: ZipCode,
-    };
-    try {
-      const response = await fetch("/api/fetchYelpApi", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataToSend),
-      });
-
-      if (!response.ok) {
-        throw new Error("http error: ${resonce.status}");
-      }
-      const responseJson = await response.json();
-      console.log(response);
-
-      router.push("/Services");
-    } catch (error) {
-      console.error("error in fetch", error);
-    }
-  };
-
   return (
     <div
       className="hero min-h-screen"
