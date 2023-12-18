@@ -39,6 +39,8 @@ const config = {
   "@typescript-eslint/no-unsafe-argument": "warn",
 
   "@typescript-eslint/await-thenable": "warn",
+  "@typescript-eslint/no-floating-promises": "warn",
+  
   },
 };
 
