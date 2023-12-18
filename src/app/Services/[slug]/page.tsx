@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 interface Category {
   title: string;
 }
+interface Location{
+  display_address: string;
+}
 interface Business {
   id: string;
   name: string;
@@ -106,7 +109,7 @@ export default function Company({ params }: { params: { slug: string } }) {
 
           <div className="p-4">
           <p className="text-sm md:text-base"><span className="font-semibold">Phone:</span> {businessData.phone}</p>
-          <p className="text-sm md:text-base"><span className="font-semibold">Location:</span> {businessData.location.display_address.join(", ")}</p>
+          <p className="text-sm md:text-base"><span className="font-semibold">Location:</span> {businessData.location.display_address} </p>
           <a href={businessData.url} className="text-blue-500 hover:text-blue-700 transition duration-300" target="_blank" rel="noopener noreferrer">Visit Yelp Page</a>
           <h2 className="font-semibold mt-3">Categories:</h2>
           <ul className="list-disc list-inside">
